@@ -44,7 +44,7 @@ const CreatePost = () => {
               name='author'
               type="text" 
               className='border py-[5px] px-[10px] border-gray-600 outline-none w-full mb-[10px] rounded-[5px]' 
-              placeholder='Title...'
+              placeholder='Author...'
             />
             <label htmlFor="content">Content</label>
             <textarea 
