@@ -9,11 +9,16 @@ const CreatePost = () => {
   const [content, setContent] = useState('')
   const handleCreatePost = (e) => {
     e.preventDefault()
-    BlogStore.addPost(Date.now(), author, title, content)
-    setTitle('')
-    setAuthor('')
-    setContent('')
-    toast.success("Successfully create new post")
+    if(title && author && content){
+      BlogStore.addPost(Date.now(), author, title, content)
+      setTitle('')
+      setAuthor('')
+      setContent('')
+      toast.success("Successfully create new post")
+    }
+    else{
+      toast.error("Dont leave the cells blank")
+    }
   }
 
   return (

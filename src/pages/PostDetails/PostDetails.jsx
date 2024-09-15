@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom';
 import { observer } from "mobx-react-lite";
 import BlogStore from "../../store/BlogStore"
 import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const PostDetails = () => {
   const { id } = useParams()
   // data from mobx
@@ -15,8 +17,14 @@ const PostDetails = () => {
 
   const handleSubmitEdit = (e) => {
     e.preventDefault()
-    BlogStore.updatePost(Number(id), author, title, content)
-    setEditPost(false)
+    if(title && author && content){
+      BlogStore.updatePost(Number(id), author, title, content)
+      setEditPost(false)
+      toast.success("Successfully update this post")
+    }
+    else{
+      toast.error(`Dont leave the cells blank`)
+    }
   }
 
   useEffect(() => {
@@ -79,6 +87,7 @@ const PostDetails = () => {
             </form>
           }
         </div>
+        <ToastContainer />
       </div>
     </>
   )

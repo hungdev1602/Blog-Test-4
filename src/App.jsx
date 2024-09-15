@@ -5,8 +5,17 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import PostDetails from './pages/PostDetails/PostDetails'
 import CreatePost from './pages/CreatePost/CreatePost'
-
+import { observer } from "mobx-react-lite";
+import BlogStore from "./store/BlogStore"
 function App() {
+  if(!BlogStore.isLogin){
+    return (
+      <>
+        <Login />
+      </>
+    )
+  }
+
   return (
     <>
       <Navbar />
@@ -22,4 +31,4 @@ function App() {
   )
 }
 
-export default App
+export default observer(App)

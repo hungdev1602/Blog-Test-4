@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react-lite";
+import BlogStore from "../../store/BlogStore"
 const Navbar = () => {
   return (
     <div className="bg-[#79B9D2] text-white">
@@ -11,11 +13,11 @@ const Navbar = () => {
           <li className="">
             <Link to={'/createpost'}>Create Posts</Link>
           </li>
-          <li className="">Logout</li>
+          <li className="cursor-pointer" onClick={() => BlogStore.logout()}>Logout</li>
         </ul>
       </div>
     </div>
   )
 }
 
-export default Navbar
+export default observer(Navbar)

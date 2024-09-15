@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div className="mt-[20px]">
         {/* List */}
-        <div className="grid grid-cols-3 gap-[20px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
           {/* Item */}
           {BlogStore.posts.map((item) => (
             <PostItem 
